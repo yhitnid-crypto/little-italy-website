@@ -1,0 +1,339 @@
+/* ============================================
+   Trattoria Bella Vita – Stylesheet
+   Farben: Sanftrot, Terrakotta, Creme, Olivgrün
+   ============================================ */
+
+:root {
+  --color-cream: #faf5ec;
+  --color-cream-dark: #f1e8d4;
+  --color-terracotta: #c8654a;
+  --color-terracotta-dark: #a84e36;
+  --color-soft-red: #b23b2a;
+  --color-olive: #6b7a3a;
+  --color-olive-dark: #4f5a28;
+  --color-ink: #2b231d;
+  --color-muted: #6c5f53;
+  --color-line: #e5d9c2;
+
+  --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-accent: "Playfair Display", "Georgia", serif;
+
+  --max-width: 1160px;
+  --radius: 4px;
+  --shadow: 0 6px 24px rgba(43, 35, 29, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-ink);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--color-terracotta-dark); text-decoration: none; }
+a:hover { color: var(--color-soft-red); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1em; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ----- Header / Nav ----- */
+.site-header {
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.brand {
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  color: var(--color-terracotta-dark);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.brand span { color: var(--color-olive-dark); }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  color: var(--color-ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-terracotta-dark);
+  border-bottom-color: var(--color-terracotta);
+}
+.nav-toggle {
+  display: none;
+  background: none; border: 0;
+  font-size: 1.6rem; cursor: pointer;
+  color: var(--color-ink);
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--color-cream);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1.25rem 1.25rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid var(--color-line); }
+}
+
+/* ----- Hero ----- */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(rgba(43,35,29,0.55), rgba(43,35,29,0.55)),
+              url('../images/hero.jpg') center/cover no-repeat;
+}
+.hero-inner { max-width: 720px; padding: 4rem 1.25rem; }
+.hero h1 { color: #fff; margin-bottom: 0.6rem; }
+.hero .eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--color-cream-dark);
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+.hero p { font-size: 1.15rem; color: #f5ede0; }
+.hero-cta { margin-top: 1.75rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+/* Page hero (slim) for subpages */
+.page-hero {
+  background: var(--color-cream-dark);
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-line);
+}
+.page-hero p { color: var(--color-muted); max-width: 620px; margin: 0 auto; }
+
+/* ----- Buttons ----- */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  border: 2px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--color-terracotta);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-terracotta-dark); color: #fff; }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+.btn-outline:hover { background: #fff; color: var(--color-ink); }
+.btn-olive { background: var(--color-olive); color: #fff; }
+.btn-olive:hover { background: var(--color-olive-dark); color: #fff; }
+
+/* ----- Sections ----- */
+section { padding: 4.5rem 0; }
+.section-narrow { max-width: 760px; margin: 0 auto; text-align: center; }
+.section-title-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--color-terracotta-dark);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+
+.info-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-olive-dark);
+  margin-bottom: 0.5rem;
+}
+.info-card p { margin: 0; }
+
+/* Hours table */
+.hours-list { list-style: none; padding: 0; margin: 0; }
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--color-line);
+  font-size: 0.97rem;
+}
+.hours-list li:last-child { border-bottom: 0; }
+
+/* Speisekarte teaser */
+.dish-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.dish-list li {
+  border-left: 3px solid var(--color-terracotta);
+  padding: 0.25rem 1rem;
+  text-align: left;
+}
+.dish-list h3 { margin-bottom: 0.25rem; }
+.dish-list p { color: var(--color-muted); margin: 0; font-size: 0.95rem; }
+
+/* Map placeholder */
+.map-placeholder {
+  background: var(--color-cream-dark);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  color: var(--color-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Background variants */
+.bg-cream-dark { background: var(--color-cream-dark); }
+.bg-olive-soft {
+  background: var(--color-olive);
+  color: #fff;
+}
+.bg-olive-soft h1, .bg-olive-soft h2, .bg-olive-soft h3 { color: #fff; }
+.bg-olive-soft a.btn-primary { background: var(--color-terracotta); }
+
+/* Prose */
+.prose p { color: var(--color-ink); }
+.prose .lead {
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  font-family: var(--font-accent);
+  font-style: italic;
+}
+
+/* ----- Footer ----- */
+.site-footer {
+  background: var(--color-ink);
+  color: #d8cdbf;
+  padding: 3.5rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+.site-footer h4 {
+  color: #fff;
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+.site-footer a { color: #e7ddcc; }
+.site-footer a:hover { color: #fff; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li { padding: 0.2rem 0; }
+.social-links { display: flex; gap: 0.85rem; }
+.social-links a {
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid #4a3f35; border-radius: 50%;
+  font-size: 0.85rem;
+}
+.social-links a:hover { background: var(--color-terracotta); border-color: var(--color-terracotta); color: #fff; }
+.footer-bottom {
+  border-top: 1px solid #3a3128;
+  margin-top: 2.5rem; padding-top: 1.25rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  font-size: 0.85rem; color: #9c8f80;
+}
